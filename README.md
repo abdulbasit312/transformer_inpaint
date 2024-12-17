@@ -17,7 +17,7 @@ In the train.py file, set your wandb api key and call the relevant model file in
 Then run:  python train.py
 
 
-In order to run inference, load the model weights into the appropriate model (by calling in the import statement) and set the test_ckpt in the config file. Also set the path where the photos will be saved.
+In order to run inference, load the model weights into the appropriate model (by calling in the import statement) and set the test_ckpt in the config file. Also set the path where the photos will be saved. Also set the test data and masks in the config file
 
 to run test: python test.py
 
