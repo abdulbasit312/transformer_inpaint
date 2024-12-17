@@ -1,0 +1,13 @@
+__pycache__
+ckpt_padded
+ckpt_partial
+wandb
+cuda_run_conv.sh
+cuda_run.sh
+eval_results_padded.txt
+eval_results.txt
+places2_fid.pt
+training_output_padded.out
+training_output_partial_conv.out
+training_output2_padded.err
+training_output2_partial_conv.err

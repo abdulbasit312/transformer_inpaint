@@ -1,0 +1,39 @@
+import os
+import shutil
+from pathlib import Path
+
+def divide_images_into_folders_with_symlinks(source_folder, destination_base_folder, num_folders=5):
+    # Ensure source folder exists
+    source_folder = Path(source_folder)
+    if not source_folder.is_dir():
+        raise FileNotFoundError(f"Source folder '{source_folder}' does not exist.")
+
+    # Get list of image files
+    image_files = [file for file in source_folder.iterdir() if file.is_file()]
+    total_images = len(image_files)
+
+    # Ensure enough images are available
+    if total_images < num_folders:
+        raise ValueError("Not enough images to distribute into folders.")
+
+    # Calculate number of images per folder
+    images_per_folder = total_images // num_folders
+
+    # Create destination folders and populate them with soft links
+    for i in range(num_folders):
+        dest_folder = Path(destination_base_folder) / f"test_{i+1}"
+        dest_folder.mkdir(parents=True, exist_ok=True)
+
+        start_index = i * images_per_folder
+        end_index = start_index + images_per_folder
+
+        for image_file in image_files[start_index:end_index]:
+            symlink_path = dest_folder / image_file.name
+            symlink_path.symlink_to(image_file)
+
+    print(f"Successfully divided {total_images} images into {num_folders} folders with symbolic links.")
+
+# Example usage
+source_folder = "/w/331/abdulbasit/data/x-medium/test"
+destination_base_folder = "/w/331/abdulbasit/data_batch"
+divide_images_into_folders_with_symlinks(source_folder, destination_base_folder)

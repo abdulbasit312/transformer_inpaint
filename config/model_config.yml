@@ -1,0 +1,82 @@
+#GPU ID
+gpu: 0
+world_size: 1
+# The name of this exp
+name: 'SWMHT_Net'
+ckpt_path: '/scratch/expires-2024-Dec-23/abdulbasit/ablation_LUNA'
+
+# The config file of each experiment
+config_path: '/w/331/abdulbasit/transformer_inpaint/code/config'
+
+# start from where, the default is latest
+resume_D_ckpt: '' 
+resume_ckpt: '' 
+#test_ckpt: /w/331/abdulbasit/transformer_inpaint/code/ckpt_partial/model_50.pth 
+test_ckpt: /w/331/abdulbasit/transformer_inpaint/code/ckpt_padded/model_55.pth
+
+# data_path & mask_path should be .txt
+data_path: '/w/331/abdulbasit/data/x-medium/train'
+mask_path: '/w/331/abdulbasit/data/x-medium/test_mask/testing_mask_dataset'
+
+#data_path: '/w/331/abdulbasit/ICT-main/ICT-main/train_dataset_512'
+#mask_path: '/w/331/abdulbasit/ICT-main/ICT-main/val_mask'
+
+
+# Train
+batch_size: 6
+train_epoch: 300
+weight_decay : 0.1
+learning_rate: 0.001
+lr_decay : True
+lr_min: 1e-6
+warmup_epoch : 5
+D_learning_rate: 0.001
+D_lr_decay : True
+D_lr_min: 1e-6
+D_warmup_epoch : 2
+grad_norm_clip: 1.0
+# Loss
+Lambda_LD1  : 10
+Lambda_LD2  : 10
+Lambda_L1: 10
+Lambda_Perceptual: 0.1
+Lambda_LG  : 10
+Lambda_Style: 250
+Lambda_Edge: 10
+Lambda_HSV: 10
+Lambda_LHSV: 1
+
+# checkpoint settings
+num_workers : 0
+# Define the size of transformer
+n_layer: 2
+n_embd: 128
+n_head: 8   #8>4
+embd_pdrop: 0.0
+resid_pdrop: 0.0
+attn_pdrop: 0.0
+block_size: 32
+nChannel: 3
+nDenselayer: 4
+nFeat: 128 # changed from 128 to 256
+scale: 1
+growthRate: 32
+# cswin transformer
+num_layers: 4
+split_size: [4, 8, 16, 32]
+head: [2, 4, 8, 16]
+dim: 128
+loop_time: [8, 4, 2, 1] # 1 2 21 1
+
+# where is the validation set of ImageNet
+val_path: '/w/331/abdulbasit/ICT-main/ICT-main/val_dataset_512'
+val_mask_path: '/w/331/abdulbasit/ICT-main/ICT-main/val_mask'
+#test_path: '/w/331/abdulbasit/data/x-medium/test'
+test_path: '/w/331/abdulbasit/test/image'
+test_mask_1~60_path: '/w/331/abdulbasit/test/mask'
+#test_path: '/w/331/abdulbasit/transformer_inpaint/code/trial'
+#test_mask_1~60_path: '/w/331/abdulbasit/transformer_inpaint/code/masks'
+save_mask_path: '/w/331/abdulbasit/test/prediction/' 
+save_img_path_comps: '/w/331/abdulbasit/test/prediction/'
+image_size: 512
+
