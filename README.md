@@ -2,6 +2,7 @@ This is the repository for the transformer models of the project Image Inpaintin
 
 This repository contains code for both the Partial Conv- Transformer model and the Conv-Transformer Model. 
 
+![Architecture of the Partial COnv-Transformer](images/transformer_inpaint.svg)
 Description of the Models.
 
 1. model.py - contains the definition of the Conv-Transformer Model
@@ -24,5 +25,10 @@ to run test: python test.py
 The requirements for the programs can be found in requirements.txt
 
 The pretrained models have been uploaded here: 
+1. Partial Conv- transformer: https://www.dropbox.com/scl/fi/zyt206k224ov7htrf5zn0/model_50.pth?rlkey=baeznmc2f90pnz9qj43vlp4o2&st=8f6f89an&dl=0
+2. Conv-Transformer : https://www.dropbox.com/scl/fi/wu2vaxtvmqeunwc999df6/model_55.pth?rlkey=0ex8h732ngdnpk9jrnsibjko5&st=gc5a3iuo&dl=0
+
+![Experiment Results](images/image.png)
+
 
 Repository inspired by https://github.com/bobo0303/LIGHTWEIGHT-IMAGE-INPAINTING-BY-STRIPE-WINDOW-TRANSFORMER-WITH-JOINT-ATTENTION-TO-CNN
